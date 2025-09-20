@@ -1,0 +1,815 @@
+/* Variáveis CSS para cores e fontes */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --secondary-color: #6c757d; /* Cinza sutil */
+    --accent-color: #28a745; /* Verde para destaque ou sucesso */
+    --bg-dark: #1a1a2e; /* Fundo escuro */
+    --text-light: #f4f4f4; /* Texto claro */
+    --card-bg: #2b2b45; /* Fundo de cards/elementos */
+    --border-color: #3f3f5a; /* Cor da borda */
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+
+/* Container genérico */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-body);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light); /* Cor inicial do texto */
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    color: var(--text-light); /* <-- NOVO: Garante que o texto continue claro no hover */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Fundo tsparticles */
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Garante que fique atrás de todo o conteúdo */
+}
+
+/* Header */
+.header {
+    background-color: rgba(26, 26, 46, 0.9); /* Fundo semi-transparente */
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: var(--bg-dark); /* Fica opaco ao rolar */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--text-light);
+}
+
+.navbar-toggler {
+    display: none; /* Escondido por padrão, visível no mobile */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-light);
+    position: relative;
+    padding-bottom: 0.2rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-download-cv {
+    margin-left: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 2rem 1rem;
+    background: transparent; /* Apenas para garantir que o tsparticles apareça */
+}
+
+.hero-content {
+    max-width: 800px;
+    position: relative; /* Para ficar acima do tsparticles */
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    color: rgba(244, 244, 244, 0.8);
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Faz os botões do Hero terem o mesmo tamanho */
+.hero-actions .btn {
+    flex: 1; /* Faz os botões crescerem e ocuparem o espaço igualmente */
+    max-width: 220px; /* Limita o tamanho máximo para não ficarem gigantes em telas muito largas */
+    justify-content: center; /* Centraliza o conteúdo dentro dos botões (por serem display: inline-flex) */
+    text-align: center; /* Garante que o texto fique centralizado */
+}
+
+
+/* Seções Gerais */
+.section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Sobre Mim */
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-content p {
+    margin-bottom: 1rem;
+    color: rgba(244, 244, 244, 0.85);
+}
+
+/* Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.skill-icon {
+    margin-right: 0.8rem;
+    color: var(--accent-color);
+    font-size: 1.8rem;
+}
+
+.skill-category ul {
+    margin-top: 1rem;
+}
+
+.skill-category li {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    color: rgba(244, 244, 244, 0.9);
+}
+
+.skill-category li:last-child {
+    border-bottom: none;
+}
+
+/* Projetos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: rgba(244, 244, 244, 0.85);
+    margin-bottom: 1.2rem;
+    flex-grow: 1; /* Para fazer os cards terem altura uniforme */
+}
+
+.project-techs {
+    margin-top: auto; /* Empurra as techs para o final */
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    background-color: rgba(var(--primary-color-rgb, 0, 123, 255), 0.2); /* Usa a cor primária com transparência */
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap; /* Evita quebra de linha dentro da tag */
+}
+
+.project-value {
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.project-value strong {
+    color: var(--text-light);
+}
+
+/* Experiência e Educação (Timeline) */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--border-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 1rem 0;
+    position: relative;
+    width: 50%;
+    margin-bottom: 2rem;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 3rem;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 3rem;
+    text-align: left;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: var(--primary-color);
+    border: 3px solid var(--card-bg);
+    top: 20px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; /* Adicionando transição */
+}
+
+.timeline-item:nth-child(odd)::after {
+    right: -10px;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+/* Efeito no balão (círculo) quando o card associado é hover */
+.timeline-item:hover::after {
+    background-color: var(--accent-color); /* Muda a cor do balão */
+    border-color: var(--accent-color); /* Muda a cor da borda do balão */
+    transform: scale(1.2); /* Faz o balão crescer um pouco */
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: rgba(244, 244, 244, 0.8);
+}
+
+/* Estilos para o link dos cursos de Educação (CS50) */
+/* Isso se aplica ao elemento <a> que envolve o conteúdo */
+.education-link {
+    display: block; /* Garante que o link ocupe todo o espaço do "card" */
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    color: inherit; /* Mantém a cor do texto do elemento pai */
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    cursor: pointer; /* Indica que o elemento é clicável */
+    background-color: var(--card-bg); /* Garante que o fundo do link seja o do card */
+    padding: 1.5rem; /* Re-aplica o padding que o timeline-content tinha */
+    border-radius: 8px; /* Re-aplica o border-radius */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Re-aplica a sombra */
+}
+
+/* Efeito ao passar o mouse sobre o link */
+.education-link:hover {
+    background-color: #353555; /* Uma cor de fundo ligeiramente mais clara no hover */
+    transform: translateY(-4px); /* Eleva o "card" ligeiramente */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Sombra mais pronunciada */
+}
+
+/* Garante a cor consistente do título dentro do link */
+.education-link h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem; /* Mantém o espaçamento */
+}
+
+/* Altera a cor do título no hover */
+.education-link:hover h3 {
+    color: var(--accent-color);
+}
+
+/* Garante a cor consistente do parágrafo dentro do link */
+.education-link p {
+    color: rgba(244, 244, 244, 0.8);
+    margin-bottom: 0; /* Remove margem extra no final do parágrafo dentro do link */
+}
+
+/* Estilo para o ícone de link externo */
+.education-icon {
+    font-size: 0.9em; /* Tamanho relativo ao texto do título */
+    margin-left: 0.6rem;
+    color: var(--secondary-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Altera a cor e move o ícone no hover */
+.education-link:hover .education-icon {
+    color: var(--accent-color);
+    transform: translateX(3px); /* Move o ícone ligeiramente para a direita */
+}
+
+
+/* Contato */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-item a, .contact-item span {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.cv-download-text {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background-color: var(--bg-dark);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+/* Animações de Scroll Reveal */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Utilitário para mobile menu */
+.navbar-collapse {
+    display: flex; /* Por padrão, visível no desktop */
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .navbar-nav {
+        gap: 1rem;
+    }
+    .nav-download-cv {
+        margin-left: 1rem;
+    }
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    .section-title {
+        font-size: 2.5rem;
+    }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block; /* Hamburger visível no mobile */
+    }
+
+    .navbar-collapse {
+        display: none; /* Menu escondido por padrão */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Abaixo do header */
+        left: 0;
+        background-color: var(--bg-dark);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .navbar-collapse.show {
+        display: flex; /* Mostra o menu quando ativo */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 0.5rem 0;
+    }
+
+    .nav-download-cv {
+        margin-left: 0;
+        width: 80%;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .hero-description {
+        font-size: 1rem;
+    }
+    .hero-actions {
+        flex-direction: column; /* Botões empilham em mobile */
+        gap: 1rem;
+    }
+    /* No mobile, os botões do hero ocupam 100% da largura disponível */
+    .hero-actions .btn {
+        max-width: 100%; /* Permite que eles se expandam no mobile */
+    }
+
+
+    .section {
+        padding: 3rem 0;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-content {
+        font-size: 1rem;
+    }
+
+    .skills-grid, .projects-grid, .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 18px; /* Move a linha do tempo para a esquerda */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 3rem;
+        padding-right: 1rem;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+        padding-right: 1rem; /* Ajusta o padding */
+    }
+
+    .timeline-item::after {
+        left: 10px; /* Move o círculo para a linha do tempo */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .skills-grid, .projects-grid, .contact-info-grid {
+        gap: 1.5rem;
+    }
+    .project-card h3 {
+        font-size: 1.4rem;
+    }
+    .project-card p {
+        font-size: 0.9rem;
+    }
+    .tech-tag {
+        font-size: 0.75rem;
+    }
+    .social-icon {
+        font-size: 1.8rem;
+    }
+}
+
+/* Variáveis para calcular a cor rgb da primary-color */
+/* Isso é um hack para usar rgba com variáveis de cor hexadecimal */
+/* Não é ideal, mas funciona para este exemplo */
+.btn-primary {
+    --primary-color-rgb: 0, 123, 255; /* Exemplo para #007bff */
+}
+/* Se você mudar primary-color, terá que recalcular este RGB manualmente ou usar pré-processadores */
